@@ -18,8 +18,8 @@ class Covariant f where
 type Bifunctor :: (Type -> Type -> Type) -> Constraint
 class Bifunctor p where
   bimap :: (a -> b) -> (c -> d) -> p a c -> p b d
-  first :: (a -> b) -> p a c -> p b c
-  second :: (c -> d) -> p a c -> p a d
+  bifst :: (a -> b) -> p a c -> p b c
+  bisnd :: (c -> d) -> p a c -> p a d
 
 type Contravariant :: (Type -> Type) -> Constraint
 class Contravariant f where
@@ -27,6 +27,6 @@ class Contravariant f where
 
 type Profunctor :: (Type -> Type -> Type) -> Constraint
 class Profunctor p where
-  dimap :: (a -> b) -> (c -> d) -> p b c -> p a d
-  lmap :: (a -> b) -> p b c -> p a c
-  rmap :: (c -> d) -> p a c -> p a d
+  promap :: (a -> b) -> (c -> d) -> p b c -> p a d
+  profst :: (a -> b) -> p b c -> p a c
+  prosnd :: (c -> d) -> p a c -> p a d
