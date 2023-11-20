@@ -23,10 +23,10 @@ class Bifunctor p where
 
 type Contravariant :: (Type -> Type) -> Constraint
 class Contravariant f where
-  contramap :: (a -> b) -> f b -> f a
+  contramap :: (b -> a) -> f a -> f b
 
 type Profunctor :: (Type -> Type -> Type) -> Constraint
 class Profunctor p where
-  promap :: (a -> b) -> (c -> d) -> p b c -> p a d
-  profst :: (a -> b) -> p b c -> p a c
+  promap :: (b -> a) -> (c -> d) -> p a c -> p b d
+  profst :: (b -> a) -> p a c -> p b c
   prosnd :: (c -> d) -> p a c -> p a d
